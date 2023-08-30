@@ -25,6 +25,18 @@
 			}
 		},
     {
+			"path": "pages/index/info",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+    {
+			"path": "pages/index/add/editor",
+			"style": {
+				"navigationBarTitleText": "富文本编辑"
+			}
+		},
+    {
 			"path": "pages/myMain/index",
 			"style": {
 				"navigationBarTitleText": "我的"
