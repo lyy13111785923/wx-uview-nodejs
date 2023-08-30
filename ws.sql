@@ -11,7 +11,7 @@
  Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 29/08/2023 17:05:16
+ Date: 30/08/2023 11:00:24
 */
 
 SET NAMES utf8mb4;
@@ -35,8 +35,11 @@ CREATE TABLE `login` (
 DROP TABLE IF EXISTS `memorandum`;
 CREATE TABLE `memorandum` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `message` varchar(255) DEFAULT NULL,
+  `message` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `user` varchar(255) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `shortTitle` text CHARACTER SET utf8 COLLATE utf8_general_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 SET FOREIGN_KEY_CHECKS = 1;
