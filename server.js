@@ -8,8 +8,10 @@ const app = express();
 var url = require("url");
 var bodyParser = require("body-parser"); //格式化请求消息的中间件
 const db = require("./db/db.js");
+const dayjs=require('dayjs')
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 //设置允许跨域的域名，*代表允许任意域名跨域
 app.all("*", function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); //允许的header类型
@@ -81,6 +83,20 @@ app.get("/queryAll_data", (req, res, next) => {
 app.get("/validate_login", (req, res,next) => {
     const params = url.parse(req.url, true).query;
     db.dbQueryByUserName("login", params.username, res, next);
+});
+app.get("/memorandum_getAll", (req, res, next) => {
+    db.dbQueryAll("memorandum", "", res, next);
+});
+app.post("/memorandum_add", (req, res, next) => {
+    let body = req.body;
+    let shortTitle = body.shortTitle.replace(/\n/g, '');
+    let sqlParam = {
+        message: body.message,
+        user:'1',
+        date: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        shortTitle:shortTitle,
+    };
+    db.dbAdd("memorandum", sqlParam, res, next);
 });
 
 app.listen(3333, () => console.log("Example app listening on port 3333!"));

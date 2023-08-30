@@ -12,7 +12,7 @@ let login = {
 };
 
 let memorandum = {
-    insert: "INSERT INTO memorandum(message) VALUES(?)",
+    insert: "INSERT INTO memorandum(message,user,date,shortTitle) VALUES(?,?,?,?)",
     update: "UPDATE memorandum SET message=? WHERE id=?",
     delete: "DELETE FROM memorandum WHERE id=?",
     queryById: "SELECT * FROM memorandum WHERE id=?",
